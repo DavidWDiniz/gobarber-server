@@ -20,15 +20,15 @@ class AuthenticateUserService {
     public async execute({email, password}: Request): Promise<Response> {
         const userRepository = getRepository(User);
 
-        const user = await  userRepository.findOne({where: {email}});
+        const user = await userRepository.findOne({where: {email}});
 
-        if(!user) {
+        if (!user) {
             throw new AppError("Incorrect email or password combination", 401);
         }
 
         const passwordMatched = await compare(password, user.password);
 
-        if(!passwordMatched) {
+        if (!passwordMatched) {
             throw new AppError("Incorrect email or password combination", 401);
         }
 

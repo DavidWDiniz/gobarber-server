@@ -1,5 +1,5 @@
 import "reflect-metadata";
-import express, {Request, Response, NextFunction} from "express";
+import express, {NextFunction, Request, Response} from "express";
 import "express-async-errors";
 import routes from "./routes";
 
@@ -22,8 +22,8 @@ app.use((err: Error, request: Request, response: Response, _next: NextFunction) 
     }
     console.error(err);
     return response.status(500).json({
-       status: "error",
-       message: "Internal server error",
+        status: "error",
+        message: "Internal server error",
     });
 });
 
