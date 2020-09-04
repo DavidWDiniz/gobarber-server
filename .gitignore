@@ -2,4 +2,3 @@ node_modules/
 
 tmp/*
 !tmp/.gitkeep
-/yarn.lock
