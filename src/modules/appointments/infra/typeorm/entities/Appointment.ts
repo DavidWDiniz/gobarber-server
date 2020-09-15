@@ -8,7 +8,7 @@ import {
     UpdateDateColumn
 } from "typeorm";
 
-import User from "./Users";
+import User from "../../../../users/infra/typeorm/entities/Users";
 
 @Entity("appointments")
 class Appointment {
