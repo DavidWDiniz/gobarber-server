@@ -24,4 +24,3 @@ class AppointmentsRepository implements  IAppointmentsRepository {
 }
 
 export default AppointmentsRepository;
-

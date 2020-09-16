@@ -6,7 +6,8 @@
   "scripts": {
     "build": "tsc",
     "dev:server": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules src/shared/infra/http/server.ts",
-    "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js"
+    "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js",
+    "test": "jest"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -29,6 +30,8 @@
     "@types/jsonwebtoken": "^8.5.0",
     "@types/multer": "^1.4.4",
     "@types/uuid": "^8.3.0",
+    "jest": "^26.4.2",
+    "ts-jest": "^26.3.0",
     "ts-node-dev": "^1.0.0-pre.61",
     "typescript": "^4.0.2"
   }
