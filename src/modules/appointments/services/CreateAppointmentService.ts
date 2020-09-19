@@ -18,7 +18,7 @@ class CreateAppointmentService {
         private appointmentsRepository: IAppointmentsRepository
     ) {}
 
-    public async execute({date, provider_id}: Request): Promise<Appointment> {
+    async execute({date, provider_id}: Request): Promise<Appointment> {
 
         const appointmentDate = startOfHour(date);
 

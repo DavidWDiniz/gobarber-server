@@ -2,7 +2,9 @@ import "reflect-metadata";
 import {injectable, inject} from "tsyringe";
 
 import IUsersRepository from "../repositories/IUsersRepository";
+import IUserTokensRepository from "../repositories/IUserTokensRepository";
 import IMailProvider from "../../../shared/container/providers/MailProvider/models/IMailProvider";
+import AppError from "../../../shared/errors/AppError";
 
 interface Request {
     email: string;
@@ -16,11 +18,21 @@ class SendForgotPasswordEmailService {
 
         @inject("MailProvider")
         private mailProvider: IMailProvider,
+
+        @inject("userTokensRepository")
+        private userTokensRepository: IUserTokensRepository,
     ) {}
-    public async execute({email}: Request): Promise<void> {
+    async execute({email}: Request): Promise<void> {
+        const user = await this.usersRepository.findByEmail(email);
+        if (!user) {
+            throw new AppError("User does not exists");
+        }
+
+        await this.userTokensRepository.generate(user.id);
+
         await this.mailProvider.sendMail(
             email,
-            "Pedido de recuperação de e-mail recebido"
+            "Pedido de recuperação de e-mail recebido."
         );
     }
 }

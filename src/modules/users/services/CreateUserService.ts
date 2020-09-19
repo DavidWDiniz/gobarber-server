@@ -1,7 +1,7 @@
 import "reflect-metadata";
 import {injectable, inject} from "tsyringe";
 
-import User from "../infra/typeorm/entities/Users";
+import User from "../infra/typeorm/entities/User";
 import AppError from "../../../shared/errors/AppError";
 import IUsersRepository from "../repositories/IUsersRepository";
 import IHashProvider from "../providers/HashProvider/models/IHashProvider";
@@ -21,7 +21,7 @@ class CreateUserService {
         @inject("HashProvider")
         private hashProvider: IHashProvider
     ) {}
-    public async execute({name, email, password}: Request): Promise<User> {
+    async execute({name, email, password}: Request): Promise<User> {
 
         const checkUserExists = await this.usersRepository.findByEmail(email);
 

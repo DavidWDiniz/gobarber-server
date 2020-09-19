@@ -3,7 +3,7 @@ import {sign} from "jsonwebtoken";
 import {injectable, inject} from "tsyringe";
 
 import authConfig from "../../../config/auth";
-import User from "../infra/typeorm/entities/Users";
+import User from "../infra/typeorm/entities/User";
 import AppError from "../../../shared/errors/AppError";
 import IUsersRepository from "../repositories/IUsersRepository";
 import IHashProvider from "../providers/HashProvider/models/IHashProvider";
@@ -26,7 +26,7 @@ class AuthenticateUserService {
         @inject("HashProvider")
         private hashProvider: IHashProvider
     ) {}
-    public async execute({email, password}: Request): Promise<Response> {
+    async execute({email, password}: Request): Promise<Response> {
 
         const user = await this.usersRepository.findByEmail(email);
 

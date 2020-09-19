@@ -8,7 +8,7 @@ interface Message {
 export default class FakeMailProvider implements IMailProvider{
     protected message: Message[] = [];
 
-    public async sendMail(to: string, body: string): Promise<void> {
+    async sendMail(to: string, body: string): Promise<void> {
         this.message.push({to, body});
     }
 }

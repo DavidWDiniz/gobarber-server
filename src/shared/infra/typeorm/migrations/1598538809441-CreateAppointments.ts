@@ -2,7 +2,7 @@ import {MigrationInterface, QueryRunner, Table} from "typeorm";
 
 export default class CreateAppointments1598538809441 implements MigrationInterface {
 
-    public async up(queryRunner: QueryRunner): Promise<void> {
+    async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
                 name: "appointments",
@@ -38,7 +38,7 @@ export default class CreateAppointments1598538809441 implements MigrationInterfa
         );
     }
 
-    public async down(queryRunner: QueryRunner): Promise<void> {
+    async down(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.dropTable("appointments");
     }
 
