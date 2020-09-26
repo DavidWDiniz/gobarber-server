@@ -10,7 +10,7 @@ interface Request {
 }
 
 @injectable()
-export default class ShowProfileService {
+class ShowProfileService {
     constructor(
         @inject("UsersRepository")
         private usersRepository: IUsersRepository,
@@ -26,3 +26,5 @@ export default class ShowProfileService {
         return user;
     }
 }
+
+export default ShowProfileService;

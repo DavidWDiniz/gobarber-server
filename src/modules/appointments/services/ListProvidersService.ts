@@ -8,7 +8,7 @@ interface Request {
 }
 
 @injectable()
-export default class ListProvidersService {
+class ListProvidersService {
     constructor(
         @inject("UsersRepository")
         private usersRepository: IUsersRepository,
@@ -20,3 +20,5 @@ export default class ListProvidersService {
         });
     }
 }
+
+export default ListProvidersService;

@@ -15,7 +15,7 @@ interface Request {
 }
 
 @injectable()
-export default class UpdateProfileService {
+class UpdateProfileService {
     constructor(
         @inject("UsersRepository")
         private usersRepository: IUsersRepository,
@@ -66,3 +66,5 @@ export default class UpdateProfileService {
         return this.usersRepository.save(user);
     }
 }
+
+export default UpdateProfileService;
