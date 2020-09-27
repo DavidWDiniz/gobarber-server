@@ -7,6 +7,7 @@ import IAppointmentsRepository from "../repositories/IAppointmentsRepository";
 import AppError from "../../../shared/errors/AppError";
 
 interface Request {
+    user_id: string;
     provider_id: string;
     date: Date;
 }
@@ -18,7 +19,7 @@ class CreateAppointmentService {
         private appointmentsRepository: IAppointmentsRepository
     ) {}
 
-    async execute({date, provider_id}: Request): Promise<Appointment> {
+    async execute({date, provider_id, user_id}: Request): Promise<Appointment> {
 
         const appointmentDate = startOfHour(date);
 
@@ -31,6 +32,7 @@ class CreateAppointmentService {
         }
 
         return await this.appointmentsRepository.create({
+            user_id,
             provider_id,
             date: appointmentDate,
         });

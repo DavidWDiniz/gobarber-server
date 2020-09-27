@@ -14,7 +14,7 @@ export default class AppointmentsForeignKey1598553440015 implements MigrationInt
     }
 
     async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropForeignKey("appointments", "AppointmentsProvider");
+        await queryRunner.dropForeignKey("appointments", "AppointmentProvider");
     }
 
 }
