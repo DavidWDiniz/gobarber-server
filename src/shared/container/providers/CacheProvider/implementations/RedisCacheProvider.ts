@@ -9,15 +9,19 @@ export default class RedisCacheProvider implements ICacheProvider{
         this.client = new Redis(cacheConfig.config.redis);
     }
 
-    async save(key: string, value: string): Promise<void> {
-        await this.client.set(key, value);
+    async save(key: string, value: any): Promise<void> {
+        await this.client.set(key, JSON.stringify(value));
     }
 
     async invalidate(key: string): Promise<void> {
     }
 
-    async recover(key: string): Promise<string | null> {
-        return await this.client.get(key);
+    async recover<T>(key: string): Promise<T | null> {
+        const data = await this.client.get(key);
+        if (!data) {
+            return null;
+        }
+        return JSON.parse(data) as T;
     }
 
 }
