@@ -14,6 +14,7 @@ export default class RedisCacheProvider implements ICacheProvider{
     }
 
     async invalidate(key: string): Promise<void> {
+        await this.client.del(key);
     }
 
     async recover<T>(key: string): Promise<T | null> {
